@@ -1,4 +1,5 @@
 ﻿using Programming.DAL;
+using ProgrammingAPI.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Http;
 
 namespace ProgrammingAPI.Controllers
 {
+    [ApiExceptionAttributes]
     public class LanguagesController : ApiController
     {
         LanguageDAL languageDAL = new LanguageDAL();

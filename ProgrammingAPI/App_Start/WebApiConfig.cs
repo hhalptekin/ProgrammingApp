@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgrammingAPI.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -14,6 +15,7 @@ namespace ProgrammingAPI
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            config.Filters.Add(new ApiExceptionAttributes());
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
