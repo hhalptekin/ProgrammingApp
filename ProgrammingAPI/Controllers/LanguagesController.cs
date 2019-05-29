@@ -12,14 +12,22 @@ namespace ProgrammingAPI.Controllers
     {
         LanguageDAL languageDAL = new LanguageDAL();
 
-        public IEnumerable<Language> Get()
+
+        public IHttpActionResult Get()
         {
-            return languageDAL.GetAllLanguages();
+            var language = languageDAL.GetAllLanguages();
+            return Ok(language);
+            //ok  IHttpActionResult interfacenin resposive kodunun kısaltılmıs halidir
 
         }
-        public Language Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return languageDAL.GetLanguagesById(id);
+            var language = languageDAL.GetLanguagesById(id);
+            if (language==null)
+            {
+                return NotFound();
+            }
+            return Ok();
 
         }
 
@@ -28,13 +36,13 @@ namespace ProgrammingAPI.Controllers
             return languageDAL.CreateLanguages(languages);
         }
 
-        public Language Put(int id,Language languages)
+        public Language Put(int id, Language languages)
         {
-            return languageDAL.UpdateLangusages(id,languages);
+            return languageDAL.UpdateLangusages(id, languages);
         }
         public void Delete(int id)
         {
-             languageDAL.DeleteLanguages(id);
+            languageDAL.DeleteLanguages(id);
         }
     }
 }
